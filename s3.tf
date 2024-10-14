@@ -14,7 +14,7 @@ resource "aws_s3_bucket_replication_configuration" "replication" {
 
   role = aws_iam_role.replication_role.arn
 
-  rules {
+  rule {
 	id     = "replication_rule"
 	status = "Enabled"
 	destination {
