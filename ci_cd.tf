@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins_server" {
   ami           = var.ami_id
-  instance_type = "t3.medium"
+  instance_type = "t2.medium"
   subnet_id     = aws_subnet.public_subnet[0].id
   security_groups = [aws_security_group.allow_http_ssh.id]
 
