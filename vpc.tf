@@ -35,11 +35,3 @@ resource "aws_security_group" "allow_http_ssh" {
 data "aws_availability_zones" "available" {
   state = "available"
 }
-
-resource "aws_subnet" "public_subnet" {
-  count = 2
-  vpc_id     = aws_vpc.telecom_vpc.id
-  cidr_block = cidrsubnet(aws_vpc.telecom_vpc.cidr_block, 8, count.index)
-  map_public_ip_on_launch = true
-  availability_zone = element(data.aws_availability_zones.available.names, count.index)
-}
