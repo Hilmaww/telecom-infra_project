@@ -1,11 +1,16 @@
 # S3 Bucket resource
 resource "aws_s3_bucket" "telecom_backup" {
   bucket = "telecom-backup-bucket"
-  acl    = "private"
-
+  
   tags = {
     Name = "telecom-backup"
   }
+}
+
+# New resource to manage the bucket's ACL
+resource "aws_s3_bucket_acl" "telecom_backup_acl" {
+  bucket = aws_s3_bucket.telecom_backup.id
+  acl    = "private"
 }
 
 # S3 Versioning resource
