@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "telecom_backup" {
+resource "aws_s3_bucket_versioning" "telecom_backup" {
   bucket = "telecom-backup-bucket"
   acl    = "private"
   versioning {
