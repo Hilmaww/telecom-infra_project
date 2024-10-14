@@ -24,6 +24,7 @@ DEFINITION
 }
 
 resource "aws_ecs_service" "telecom_ecs_service" {
+  name           = iot_service
   cluster        = aws_ecs_cluster.telecom_ecs.id
   task_definition = aws_ecs_task_definition.telecom_task.arn
   desired_count  = 2
