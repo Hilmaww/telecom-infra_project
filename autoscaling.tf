@@ -17,7 +17,10 @@ resource "aws_autoscaling_group" "telecom_asg" {
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
-  vpc_zone_identifier  = [aws_subnet.public_subnet[*].id]
+  
+  # Flatten the subnet IDs into a list of strings
+  vpc_zone_identifier  = aws_subnet.public_subnet[*].id
+
   launch_template {
     id      = aws_launch_template.telecom_lt.id
     version = "$Latest"
